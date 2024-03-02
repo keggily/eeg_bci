@@ -1,22 +1,24 @@
-"""Example program to show how to read a multi-channel time series from LSL."""
+
+"""
+Source: https://github.com/labstreaminglayer/pylsl/tree/master
+Author: Christian Kothe
+Modified HD
+"""
 
 from pylsl import StreamInlet, resolve_stream
 
 
-def main():
-    # first resolve an EEG stream on the lab network
-    print("looking for an EEG stream...")
-    streams = resolve_stream('type', 'EEG')
-
-    # create a new inlet to read from the stream
-    inlet = StreamInlet(streams[0])
-
-    while True:
-        # get a new sample (you can also omit the timestamp part if you're not
-        # interested in it)
-        sample, timestamp = inlet.pull_sample()
-        print(timestamp, sample)
+# first resolve an EEG stream on the lab network
+print("looking for an EEG stream named 'BioSemi'...")
+streams = resolve_stream('type', 'EEG', 'name', 'BioSemi')
 
 
-if __name__ == '__main__':
-    main()
+# create a new inlet to read from the stream
+inlet = StreamInlet(streams[0])
+
+while True:
+    # get a new sample (you can also omit the timestamp part if you're not
+    # interested in it)
+    sample, timestamp = inlet.pull_sample()
+    print(timestamp, sample)
+
