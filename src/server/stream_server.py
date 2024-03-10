@@ -12,28 +12,41 @@ import time
 import mne
 import os
 
+
+
 srate = 160  # Sampling rate
 name = 'BioSemi'  # Stream name
 type = 'EEG'  # Stream type
 n_channels = 64  
-root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-data_path = 'data/MNE-eegbci-data/files/eegmmidb/1.0.0/' 
-subject = 'S001'  # Example subject
-run = 'R04'  # Sample run for open / closed fists 
-help_string = 'stream_server.py -s <sampling_rate> -n <stream_name> -t <stream_type> -p <data_path>'
-id = subject + '_' + run
 
 
-# Construct the file path
-file_path = os.path.join(root_dir, data_path, f"{subject}/{subject}{run}.edf")
+##If loading from repository
+# subject = 'S001'  # Example subject
+# run = 'R14'  # validation run for MI hands/feet
+# id = subject + '_' + run
 
-# Load the dataset
-raw = mne.io.read_raw_edf(file_path, preload=True)
-raw.resample(srate)  # Resample if needed
+# root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# data_path = 'data/MNE-eegbci-data/files/eegmmidb/1.0.0/' 
+# help_string = 'stream_server.py -s <sampling_rate> -n <stream_name> -t <stream_type> -p <data_path>'
+
+#file_path = os.path.join(root_dir, data_path, f"{subject}/{subject}{run}.edf")
+#raw = mne.io.read_raw_edf(file_path, preload=True)
+
+
+#If directly loading from mne
+subject_id = 1
+runs = [14] # last run motor imagery: hands vs feet
+path = mne.datasets.eegbci.load_data(
+    subject_id, runs, update_path=False)
+raw = mne.io.read_raw_edf(path[0], preload=True)
+
+
+
+#raw.resample(srate)  # might want to add this to reduce computation time
 n_channels = len(raw.info['ch_names'])
 
 # Create a new StreamInfo and an outlet
-info = StreamInfo(name, type, n_channels, srate, 'float32', id)
+info = StreamInfo(name, type, n_channels, srate, 'float32')
 outlet = StreamOutlet(info)
 
 print("now sending data...")
