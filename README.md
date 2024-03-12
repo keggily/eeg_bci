@@ -23,7 +23,7 @@ pip install -r requirements.txt
 With the environment set up and dependencies installed, you are now ready to run the server and client components.
 
 
-#### Start the EEG Data Server
+#### Start the EEG Data Server:
 Navigate to the server directory.
 Run the server script:
 
