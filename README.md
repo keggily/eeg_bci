@@ -8,7 +8,6 @@ This project uses the EEGBCI Motor Imagery dataset from MNE. Due to its size and
 
 ## Getting Started
 
-
 Clone the repository:
 First, clone the repository to your local machine using the command:
 ```
