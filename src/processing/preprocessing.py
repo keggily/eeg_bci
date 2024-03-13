@@ -13,7 +13,6 @@ def preprocess_single_trial(single_trial, sfreq, channel_names):
     Returns:
     numpy.ndarray: The preprocessed single trial data.
     """
-    # Ensure the data is in the correct shape (channels, samples)
     single_trial_transposed = np.transpose(single_trial)
     
     # Create an Info object with the extracted channel names
@@ -21,9 +20,14 @@ def preprocess_single_trial(single_trial, sfreq, channel_names):
     
     # Create a RawArray with the transposed data and newly created info
     single_trial_raw = RawArray(single_trial_transposed, info)
+
+    # Set channel names
+    eegbci.standardize(single_trial_raw) 
+
+    # Set channel locations
+    single_trial_raw.set_montage('standard_1005')   
     
-    # Now, you can apply any preprocessing steps (e.g., filtering) to single_trial_raw as needed
-    # For example:
+    # Apply bandpass filter to the data
     single_trial_raw.filter(7.0, 30.0, fir_design='firwin')
 
     # Make shape (1, channels, samples) for compatibility with the model
@@ -32,4 +36,3 @@ def preprocess_single_trial(single_trial, sfreq, channel_names):
     # Return the preprocessed data
     return single_trial_raw
 
-# Assuming you have a single trial to preprocess
