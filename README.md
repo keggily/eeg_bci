@@ -6,7 +6,7 @@ This project demonstrates a pipeline for streaming EEG data using the Lab Stream
 
 - **Online Decoding with EEG Conformer**: The `online_decoder` utilizes the EEG Conformer model, trained across 50 subjects, to achieve cross-subject decoding. Details and architecture of EEG Conformer can be found here : Convolutional Transformer for EEG Decoding and Visualization [[Paper](https://ieeexplore.ieee.org/document/9991178)]
   
-  ![Network Architecture](/visualization/Fig1.png)
+![Network Architecture](/visualization/Fig1.png)
 
 - **Cross-Subject vs. Within-Subject Decoding**: While the EEG Conformer demonstrates effective cross-subject decoding, simple decoder models are also supported but tend to perform only at chance level in this context. Comparative analyses within the provided notebooks reveal that both EEG Conformer and simple decoders achieve notable performance within-subject.
 
