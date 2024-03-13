@@ -1,6 +1,7 @@
 import numpy as np
 from mne import create_info
 from mne.io import RawArray
+from mne.datasets import eegbci
 
 def preprocess_single_trial(single_trial, sfreq, channel_names):
     """

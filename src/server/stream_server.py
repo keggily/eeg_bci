@@ -34,8 +34,8 @@ n_channels = 64
 
 
 #If directly loading from mne
-subject_id = 1
-runs = [14] # last run motor imagery: hands vs feet
+subject_id = 51 # Test on held out subject
+runs = [6] # First run motor imagery: hands vs feet
 path = mne.datasets.eegbci.load_data(
     subject_id, runs, update_path=False)
 raw = mne.io.read_raw_edf(path[0], preload=True)
