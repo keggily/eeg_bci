@@ -53,7 +53,8 @@ From the root directory, run the online decoding script:
 ```
 python online_decoder.py
 ```
-The client script receives the streamed EEG data, processes it in real-time, and decodes it using a pre-trained machine learning model.
+The client script receives the streamed EEG data, processes it in real-time, and decodes it using a cross-subject trained EEG Conformer. 
+Results can be viewed from real-time printed predictions, but are also saved under predictions.txt in the results directory. 
 
 
 
