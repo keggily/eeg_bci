@@ -1,5 +1,5 @@
 # Authors: Yonghao Song <eeyhsong@gmail.com>
-#
+# https://github.com/eeyhsong/EEG-Conformer
 # License: BSD (3-clause)
 # Modified HD
 
