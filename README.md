@@ -53,7 +53,9 @@ From the root directory, run the online decoding script:
 ```
 python online_decoder.py
 ```
-The client script receives the streamed EEG data, processes it in real-time, and decodes it using a pre-trained machine learning model.
+The client script receives the streamed EEG data, processes it in real-time, and decodes it using a cross-subject trained EEG Conformer. 
+Results can be viewed from real-time printed predictions, but are also saved under predictions.txt in the results directory. 
 
 
-
+### References
+Ary L. Goldberger, Luis A. N. Amaral, Leon Glass, Jeffrey M. Hausdorff, Plamen Ch. Ivanov, Roger G. Mark, Joseph E. Mietus, George B. Moody, Chung-Kang Peng, and H. Eugene Stanley. PhysioBank, PhysioToolkit, and PhysioNet: Components of a new research resource for complex physiologic signals. Circulation, 2000. doi:10.1161/01.CIR.101.23.e215.
